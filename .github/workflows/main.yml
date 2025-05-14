@@ -7,7 +7,7 @@ on:
 
 jobs:
   docker:
-    name: buil_image
+    name: build_image
     runs-on: ubuntu-latest
 
     steps:
@@ -26,5 +26,5 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/coversao-distancia:v2
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/coversao-distancia:v3
     
