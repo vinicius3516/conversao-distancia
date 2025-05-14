@@ -23,8 +23,8 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v3
         with:
-          context: ./conversao-distancia
-          file: ./conversao-distancia/Dockerfile
+          context: .
+          file: ./Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/coversao-distancia:v2
     
