@@ -1,0 +1,20 @@
+name: docker-image
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+jobs:
+  build-image-docker:
+    name: buil_image
+    runson: ubuntu-latest
+
+    steps:
+      -
+        name: Login to Docker Hub
+      -
+        name: Set up Docker Buildx
+      -
+        name: Build and push
+    
