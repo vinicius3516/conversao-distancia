@@ -6,15 +6,25 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-image-docker:
+  docker:
     name: buil_image
-    runson: ubuntu-latest
+    runs-on: ubuntu-latest
 
     steps:
-      -
-        name: Login to Docker Hub
-      -
-        name: Set up Docker Buildx
-      -
-        name: Build and push
+      - name: Login to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+        
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          file: Dockerfile
+          push: true
+          tags: ${{ secrets.DOCKER_USERNAME }}/docker-image:latest
     
